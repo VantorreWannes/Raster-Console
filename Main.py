@@ -5,9 +5,17 @@ class Grid:
     def __init__(self, WIDTH=0, HEIGHT=0):
         self.WIDTH = WIDTH
         self.HEIGHT = HEIGHT
+
+    def print_grid():
+        ''''''
+        pass
     
-    def create_empty_grid():
-        '''Creates an empty array of X and Y size.'''
+    def update_pixel(self, X, Y, new_character):
+        '''Changes the character behind a certain X and Y combination.'''
+        pass
+    
+    def create_empty_grid(self, width, height):
+        '''Creates an array of X size containing multiple arrays of Y size.'''
         pass
 
     def print_horizontal_slice(self):
@@ -19,7 +27,7 @@ class Grid:
         print(self.WIDTH, self.HEIGHT)
 
 
-def refresh_screen(space):
+def push_up(space):
     '''Prints X amount of newlines so the previous messages get pushed up.'''
     for _ in range(space):
         print()
@@ -28,6 +36,6 @@ def refresh_screen(space):
 if __name__ == "__main__":
     MyGrid = Grid(10, 15)
     MyGrid.print_attributes()
-    refresh_screen(0)
+    push_up(0)
     MyGrid.print_attributes()
     pass
