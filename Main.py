@@ -5,6 +5,10 @@ class Grid:
     def __init__(self, WIDTH=0, HEIGHT=0):
         self.WIDTH = WIDTH
         self.HEIGHT = HEIGHT
+    
+    def create_empty_grid():
+        '''Creates an empty array of X and Y size.'''
+        pass
 
     def print_horizontal_slice(self):
         '''Prints a horizontal slice of the array from left to right.'''
@@ -16,7 +20,7 @@ class Grid:
 
 
 def refresh_screen(space):
-    '''Prints a bunch a newlines so the previous messages get pushed up.'''
+    '''Prints X amount of newlines so the previous messages get pushed up.'''
     for _ in range(space):
         print()
 
