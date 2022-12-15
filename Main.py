@@ -5,21 +5,21 @@ class Grid:
         self.HEIGHT = HEIGHT
         self.screen = self.create_empty_grid()
 
-    def print_grid():
+    def print_attributes(self):
+        '''Debug function; Prints the object's Width and Height.'''
+        print(self.WIDTH, self.HEIGHT)
+
+    def print_grid(self):
         '''Prints every horizontal row of the grid under each other.'''
         pass
 
     def create_empty_grid(self):
         '''Creates an array of X size containing multiple arrays of Y size.'''
-        pass
+        return [[' '] * self.HEIGHT] * self.WIDTH # Initialise the main width array every slot stores a vertical row of the grid
 
     def update_pixel(self, X, Y, new_character):
         '''Changes the character behind a certain X and Y combination.'''
         pass
-
-    def print_attributes(self):
-        '''Debug function; Prints the object's Width and Height.'''
-        print(self.WIDTH, self.HEIGHT)
 
     def check_picture_file(self, file):
         '''Checks if the txt file's text has the same width and height as our Grid instance.'''
@@ -37,8 +37,6 @@ def push_up(space):
 
 
 if __name__ == "__main__":
-    MyGrid = Grid(10, 15)
-    MyGrid.print_attributes()
-    push_up(0)
-    MyGrid.print_attributes()
+    MyGrid = Grid(4, 4)
+    print(MyGrid.screen)
     pass
