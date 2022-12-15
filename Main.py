@@ -26,7 +26,7 @@ class Grid:
         pass
 
     def read_picture_file(self, file):
-        '''Converts a txt file containing ascii art into nested arrays containing char values.'''
+        '''Converts a txt file containing ascii art into nested arrays containing char values. Also removes buggy characters such as newlines'''
         pass
 
 
