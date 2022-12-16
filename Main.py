@@ -26,13 +26,21 @@ class Grid:
         # Convert the inputed Y value to adjust for index 0 always being the first row and first element.
         self.screen[real_y][X] = new_character
 
-    def verify_picture_file(self, screen):
-        '''Checks if the screen text has the same width and height as our Grid instance.'''
-        pass
+    def verify_picture_file(self, X, Y, screen):
+        '''Checks if the screen will fit in our grid instance.'''
+        if len(screen) + Y <= self.HEIGHT:
+            if len(screen[0]) + X <= self.WIDTH:
+                return True
+        return False
 
-    def load_picture_file(self, file):
+    def load_picture_file(self, X, Y, file):
         '''Converts a txt file containing ascii art into nested arrays containing char values. Also removes buggy characters such as newlines'''
-        pass
+        with open(f'Visuals/{file}') as f:
+            fresh_screen = f.read().split('\n')
+            # Load the file into an array containing a string with newline removed for each line in the file.
+        if self.verify_picture_file(X, Y, fresh_screen) == False:
+            return False
+        
 
 
 def push_up(space):
@@ -42,8 +50,9 @@ def push_up(space):
 
 
 if __name__ == "__main__":
-    MyGrid = Grid(12, 4)
+    MyGrid = Grid(14, 4)
     MyGrid.update_pixel(0, 0, '0')
     MyGrid.update_pixel(0, 1, '1')
     MyGrid.print_grid()
+    MyGrid.load_picture_file(0, 0, "Image.txt")
     pass
