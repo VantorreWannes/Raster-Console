@@ -11,30 +11,26 @@ class Grid:
 
     def print_grid(self):
         '''Prints every horizontal row of the grid under each other.'''
-        for y in range(self.HEIGHT): 
-            # Loop over every row saving the current level as y
-            row = list() 
-            # Initialise our list acting as a collection of all the characters on a single horizontal slice.
-            for coloumn in self.screen:
-                row.append(coloumn[y]) 
-            # Loop over every value containing a list in self.screen and saving the y'th value into the row collection
-            print(*row, sep = "")
-            # Print every value in
+        for row in self.screen:
+            print(*row, sep="")
+        # Print every row's values in the self.screen array with no extra makeup.
 
     def create_empty_grid(self):
-        '''Creates an array of X size containing multiple arrays of Y size.'''
-        return [['*'] * self.HEIGHT] * self.WIDTH 
+        '''Creates an array of Y size containing multiple arrays of X size.'''
+        return [['#'] * self.WIDTH for _ in range(self.HEIGHT)]
         # Initialise the main width array every slot stores a vertical row of the grid.
 
     def update_pixel(self, X, Y, new_character):
         '''Changes the character behind a certain X and Y combination.'''
-        pass
+        real_y = len(self.screen) - (Y + 1)
+        # Convert the inputed Y value to adjust for index 0 always being the first row and first element.
+        self.screen[real_y][X] = new_character
 
-    def check_picture_file(self, file):
+    def verify_picture_file(self, file):
         '''Checks if the txt file's text has the same width and height as our Grid instance.'''
         pass
 
-    def read_picture_file(self, file):
+    def load_picture_file(self, file):
         '''Converts a txt file containing ascii art into nested arrays containing char values. Also removes buggy characters such as newlines'''
         pass
 
@@ -47,5 +43,7 @@ def push_up(space):
 
 if __name__ == "__main__":
     MyGrid = Grid(12, 4)
+    MyGrid.update_pixel(0, 0, '0')
+    MyGrid.update_pixel(0, 1, '1')
     MyGrid.print_grid()
     pass
