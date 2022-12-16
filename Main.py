@@ -20,14 +20,8 @@ class Grid:
         return [['#'] * self.WIDTH for _ in range(self.HEIGHT)]
         # Initialise the main width array every slot stores a vertical row of the grid.
 
-    def update_pixel(self, X, Y, new_character):
-        '''Changes the character behind a certain X and Y combination.'''
-        real_y = len(self.screen) - (Y + 1)
-        # Convert the inputed Y value to adjust for index 0 always being the first row and first element.
-        self.screen[real_y][X] = new_character
-
     def verify_picture_file(self, X, Y, screen):
-        '''Checks if the screen will fit in our grid instance.'''
+        '''Checks if the screen will fit in our grid instance in it's specified location.'''
         if len(screen) + Y <= self.HEIGHT:
             if len(screen[0]) + X <= self.WIDTH:
                 return True
@@ -35,12 +29,19 @@ class Grid:
 
     def load_picture_file(self, X, Y, file):
         '''Converts a txt file containing ascii art into nested arrays containing char values. Also removes buggy characters such as newlines'''
+        REAL_Y = len(self.screen) - (Y + 1)
+        # Calculate the real Y values converted to a coordinate grid in math.
         with open(f'Visuals/{file}') as f:
             fresh_screen = f.read().split('\n')
             # Load the file into an array containing a string with newline removed for each line in the file.
-        if self.verify_picture_file(X, Y, fresh_screen) == False:
+        if self.verify_picture_file(X, REAL_Y, fresh_screen) == False:
             return False
-        
+            # Return if it won't fit.
+        for i, line in enumerate(fresh_screen):
+            self.screen[REAL_Y+i][X:X+len(line)] = list(line)
+            # 1. Select the current line by taking the parameter Y and adding the current step.
+            # 2. Make a slice starting from the value of parameter X untill X + the length of the current line.
+            # 3. Replace the contents of the slice with the string converted to a char list.
 
 
 def push_up(space):
@@ -51,8 +52,7 @@ def push_up(space):
 
 if __name__ == "__main__":
     MyGrid = Grid(14, 4)
-    MyGrid.update_pixel(0, 0, '0')
-    MyGrid.update_pixel(0, 1, '1')
+    push_up(9)
+    MyGrid.load_picture_file(0, 4, "Image.txt")
     MyGrid.print_grid()
-    MyGrid.load_picture_file(0, 0, "Image.txt")
     pass
