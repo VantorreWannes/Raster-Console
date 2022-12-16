@@ -26,8 +26,8 @@ class Grid:
         # Convert the inputed Y value to adjust for index 0 always being the first row and first element.
         self.screen[real_y][X] = new_character
 
-    def verify_picture_file(self, file):
-        '''Checks if the txt file's text has the same width and height as our Grid instance.'''
+    def verify_picture_file(self, screen):
+        '''Checks if the screen text has the same width and height as our Grid instance.'''
         pass
 
     def load_picture_file(self, file):
