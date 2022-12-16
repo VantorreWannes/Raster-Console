@@ -22,13 +22,14 @@ class Grid:
 
     def verify_picture_file(self, X, Y, screen):
         '''Checks if the screen will fit in our grid instance in it's specified location.'''
-        if len(screen) + Y <= self.HEIGHT:
-            if len(screen[0]) + X <= self.WIDTH:
-                return True
+        if X >= 0 and Y >= 0:
+            if len(screen) + Y <= self.HEIGHT and len(screen) + Y >= 0:
+                if len(screen[0]) + X <= self.WIDTH and len(screen[0]) + X >= 0:
+                    return True
         return False
 
     def load_picture_file(self, X, Y, file):
-        '''Converts a txt file containing ascii art into nested arrays containing char values. Also removes buggy characters such as newlines'''
+        '''Converts a txt file containing ascii art into arrays/lists that then replace self.screen.  Also removes buggy characters such as newlines'''
         REAL_Y = len(self.screen) - (Y + 1)
         # Calculate the real Y values converted to a coordinate grid in math.
         with open(f'Visuals/{file}') as f:
@@ -51,8 +52,9 @@ def push_up(space):
 
 
 if __name__ == "__main__":
-    MyGrid = Grid(14, 4)
-    push_up(9)
-    MyGrid.load_picture_file(0, 4, "Image.txt")
+    MyGrid = Grid(20, 5)
+    push_up(5)
+    MyGrid.load_picture_file(0, 4, "Smiley.txt")
+    MyGrid.load_picture_file(0, 4, "Point.txt")
     MyGrid.print_grid()
     pass
