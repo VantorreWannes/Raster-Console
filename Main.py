@@ -23,10 +23,12 @@ class Grid:
     def verify_picture_file(self, X, Y, screen):
         '''Checks if the screen will fit in our grid instance in it's specified location.'''
         if X >= 0 and Y >= 0:
+        # Filters non allowed coordinate inputs.
             if len(screen) + Y <= self.HEIGHT and len(screen) + Y >= 0:
                 if len(screen[0]) + X <= self.WIDTH and len(screen[0]) + X >= 0:
+            # Checks if the given screen wil fit into the current screen with simple math.
                     return True
-        #Filters non allowed coordinate inputs.
+        
         return False
 
     def load_picture_file(self, X, Y, file):
