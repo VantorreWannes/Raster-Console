@@ -17,7 +17,7 @@ class Grid:
 
     def create_empty_grid(self):
         '''Creates an array of Y size containing multiple arrays of X size.'''
-        return [['#'] * self.WIDTH for _ in range(self.HEIGHT)]
+        return [[' '] * self.WIDTH for _ in range(self.HEIGHT)]
         # Initialise the main width array every slot stores a vertical row of the grid.
 
     def verify_picture_file(self, X, Y, screen):
@@ -55,9 +55,26 @@ def push_up(space):
 
 
 if __name__ == "__main__":
-    MyGrid = Grid(20, 5)
-    push_up(5)
-    MyGrid.load_picture_file(0, 4, "Smiley.txt")
-    MyGrid.load_picture_file(0, 4, "Point.txt")
+    SIZE = 20
+
+    MyGrid = Grid(SIZE*3, SIZE)
+
+    push_up(20)
+
+    MyGrid.load_picture_file(0, 19, "Smiley.txt")
+
+    MyGrid.load_picture_file(0, 19, "H-Line.txt")
+    MyGrid.load_picture_file(0, 16, "H-Line.txt")
+    MyGrid.load_picture_file(0, 0, "H-Line.txt")
+
+    MyGrid.load_picture_file(0, 19, "V-Line.txt")
+    MyGrid.load_picture_file(9, 19, "Short-V-Line.txt")
+    MyGrid.load_picture_file(59, 19, "V-Line.txt")
+
+    MyGrid.load_picture_file(0, 16, "Point.txt")
+    MyGrid.load_picture_file(59, 16, "Point.txt")
+
+    MyGrid.load_picture_file(11, 18, "Header.txt")
+    MyGrid.load_picture_file(2, 15, "List.txt")
+
     MyGrid.print_grid()
-    pass
