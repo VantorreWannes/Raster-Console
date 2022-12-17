@@ -26,6 +26,7 @@ class Grid:
             if len(screen) + Y <= self.HEIGHT and len(screen) + Y >= 0:
                 if len(screen[0]) + X <= self.WIDTH and len(screen[0]) + X >= 0:
                     return True
+        #Filters non allowed coordinate inputs.
         return False
 
     def load_picture_file(self, X, Y, file):
