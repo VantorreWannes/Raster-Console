@@ -68,11 +68,10 @@ if __name__ == "__main__":
     MyGrid.load_picture_file(0, 0, "H-Line.txt")
 
     MyGrid.load_picture_file(0, 19, "V-Line.txt")
-    MyGrid.load_picture_file(9, 19, "Short-V-Line.txt")
     MyGrid.load_picture_file(59, 19, "V-Line.txt")
-
-    MyGrid.load_picture_file(0, 16, "Point.txt")
-    MyGrid.load_picture_file(59, 16, "Point.txt")
+    MyGrid.load_picture_file(0, 19, "Short-V-Line.txt")
+    MyGrid.load_picture_file(9, 19, "Short-V-Line.txt")
+    MyGrid.load_picture_file(59, 19, "Short-V-Line.txt")
 
     MyGrid.load_picture_file(11, 18, "Header.txt")
     MyGrid.load_picture_file(2, 15, "List.txt")
